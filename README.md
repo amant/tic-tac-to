@@ -6,6 +6,6 @@ Never been so excited to play with a frame work after codeigniter.
 Me and my girl friend, we created this game during one weekend.
 
 Demo
-tictac.meteor.com
+http://tictac.meteor.com
 
 Enjoy
