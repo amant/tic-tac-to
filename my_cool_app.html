@@ -1,0 +1,76 @@
+<head>
+  <title>My Cool Tic-tac-toe Application</title>
+  <style>
+  #board {
+    margin: auto;
+    border:4px solid #999999;
+    border-radius: 4px;
+    padding:2px;
+    width:300px;
+    height:300px;
+    background-color:#999999;
+  }
+
+  .square {
+    cursor: pointer;
+    width:84px;
+    height:84px;
+    border:4px solid #eeeee8;
+    border-radius: 4px;
+    margin: 4px;
+    float:left;
+    text-align: center;
+    background-color:#eeeee8;
+    font-size: 65px;
+  }
+
+  .info{
+    border-radius:6px; border: 1px solid #d6e9c6; background: #dff0d8; padding: 8px; color: #468847
+  }
+
+  .winner{
+    color: #c09853
+  }
+  </style>
+</head>
+
+<body>
+  <h1 style="text-align:center;">Realtime, Tic Tac Toe Application</h1>
+  {{>board}}
+  {{>players}}
+</body>
+
+<template name="players">
+  <div style="position: absolute; top: 50px; right: 10px;">
+  <h2>Players List</h2>
+  {{#each lists}}
+    {{>player}}
+  {{/each}}
+  <div style="float: right;"><button id="btnReset">Reset Game</button></div>
+  </div>
+</template>
+
+<template name="player">
+  <div style="display:block; width: 200px; border: 1px solid black; margin: 4px; padding: 12px;">
+    <div style="display:inline;" class="playerName" id="alias-{{_id}}">{{name}}: </div>
+    <input type="text" value="{{name}}" name="playerName" id="{{_id}}" style="display:none"/>
+    
+    {{#if selected}}
+      <div class="info">Your Turn</div>
+    {{else}}
+      <div>STOP</div>
+    {{/if}}
+</template>
+
+<template name="board">  
+  {{#if winner}}
+    <div style="text-align:center;" class="winner">Winner!!! {{winner}}</div>
+  {{/if}}
+  <div id="board">
+    <div>
+    {{#each boardMatrix}}
+      <div class="square" id="{{_id}}">{{value}}</div>
+    {{/each}}
+    </div>
+  </div>
+</template>
